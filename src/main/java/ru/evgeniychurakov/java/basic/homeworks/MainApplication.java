@@ -1,43 +1,22 @@
 package ru.evgeniychurakov.java.basic.homeworks;
 
 
-import java.util.Scanner;
-
-import static ru.evgeniychurakov.java.basic.homeworks.lesson1.Application.*;
+import static ru.evgeniychurakov.java.basic.homeworks.lesson2.Application.*;
 
 public class MainApplication {
     public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("Напишите число от 1 до 5");
-        int numberOfUser = scanner.nextInt();
-        while(numberOfUser>=1 || numberOfUser <=5){
-            int randomNum1 = (int) (Math.random()*10)+1;
-            int randomNum2 = (int) (Math.random()*20)+10;
-            int randomNum3 = (int) (Math.random()*30)+15;
-            if (numberOfUser ==1){
-                greetings();
-                break;
-            } else if (numberOfUser == 2) {
-                checkSign(randomNum1,randomNum2,randomNum3);
-                break;
-            } else if (numberOfUser == 3) {
-                selectColor();
-                break;
-            } else if (numberOfUser == 4) {
-                compareNumbers();
-                break;
-            } else if (numberOfUser == 5) {
-                addOrSubtractAndPrint(randomNum1,randomNum2, true);
-                break;
-            } else {
-                System.out.println("Ввели неверное число");
-                numberOfUser = scanner.nextInt();
-            }
-        }
-//        greetings();
-//        checkSign(1,2,-3);
-//        selectColor();
-//        compareNumbers();
-//        addOrSubtractAndPrint(1,2,true);
+        printSomethingSometimes(2,"Hello");
+
+        sumElementsOfArrayMoreFive(1,2,3,4,5,6,7,8,9,10);
+
+        int[] arr = {1,2,3,4,5,6,7,8,9,10};
+        fillArrayByDigit(3,arr);
+
+        int[] arr1 = {1,2,3,4,5,6,7,8,9,10};
+        increaseArrayByDigit(2,arr1);
+
+        calculateWhatHalfMore(1,2,3,4,5,6,7,8,9,10);
+
+
     }
 }
