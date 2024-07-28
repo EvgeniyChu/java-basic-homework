@@ -14,20 +14,17 @@ public class Application {
     }
 
     public static void printSquare(int size){
-        char[][] arr = new char[size][size];
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = 0; j < arr[i].length; j++) {
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
                 if(i == 0 || j == 0 || i == size-1 || j == size-1){
-                    arr[i][j] = '*';
+                    System.out.print('*');
                 } else {
-                    arr[i][j] = ' ';
+                    System.out.print(' ');
                 }
-                System.out.print(arr[i][j]+" ");
             }
             System.out.println();
         }
     }
-
     public static void nullifyDiagonals(int[][] arr){
         for (int i = 0; i < arr.length; i++) {
             for (int j = 0, x = arr[i].length - 1; j < arr[i].length; j++, x--) {
@@ -41,15 +38,15 @@ public class Application {
 
 
     public static int findMax(int[][] arr){
-        int counter = 0;
+        int max = 0;
         for (int i = 0; i < arr.length; i++) {
             for (int j = 0; j < arr[i].length; j++) {
-                if (arr[i][j] > counter) {
-                    counter = arr[i][j];
+                if (arr[i][j] > max) {
+                    max = arr[i][j];
                 }
             }
         }
-        return counter;
+        return max;
     }
 
     public static int sumSecondRow(int[][] arr){
@@ -57,15 +54,11 @@ public class Application {
         if (arr.length < 2){
             return -1;
         }
-        for (int i = 0; i < arr.length; i++) {
-            for (int j = 0; j < arr[i].length; j++) {
-                if (i==1) {
-                    sum += arr[i][j];
-                }
+        for (int i = 0; i < arr[1].length; i++) {
+            sum += arr[1][i];
 
             }
 
-        }
         return sum;
     }
 }
