@@ -22,10 +22,15 @@ public class MainApplication {
         dog.run(500);
         dog.run(500);
         dog.swim(500);
+        dog.run(1);
 
         horse.run(3000);
         horse.swim(500);
         horse.swim(1);
+
+        cat.info();
+        dog.info();
+        horse.info();
 
 
 
