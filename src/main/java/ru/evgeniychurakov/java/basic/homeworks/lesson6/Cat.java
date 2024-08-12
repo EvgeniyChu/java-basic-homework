@@ -4,21 +4,21 @@ public class Cat {
     private String name;
     private int appetite;
 
-    public boolean fullness=false;
+    public boolean fullness = false;
 
     public Cat(String name, int appetite) {
         this.name = name;
         this.appetite = appetite;
     }
 
-    public void eat(Plate plate){
-        if(plate.isFoodHere(this.appetite)){
-            fullness=true;
+    public void eat(Plate plate) {
+        if (plate.decreaseFood(this.appetite)) {
+            fullness = true;
         }
 
     }
 
-    public void info(){
+    public void info() {
         System.out.println("Кот " + this.name + " Насыщен ли:" + fullness);
     }
 }
