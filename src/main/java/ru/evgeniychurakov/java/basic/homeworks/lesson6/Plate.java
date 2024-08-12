@@ -6,17 +6,17 @@ public class Plate {
 
     public Plate(int maxFoodAmount) {
         this.maxFoodAmount = maxFoodAmount;
-        this.currentFoodAmount=maxFoodAmount;
+        this.currentFoodAmount = maxFoodAmount;
     }
     public void addFood(int food) {
-        if (food+this.currentFoodAmount>this.maxFoodAmount) {
-            this.currentFoodAmount=this.maxFoodAmount;
+        if (food + this.currentFoodAmount > this.maxFoodAmount) {
+            this.currentFoodAmount = this.maxFoodAmount;
         } else {
             this.currentFoodAmount += food;
         }
     }
     public boolean decreaseFood(int food) {
-        if (this.currentFoodAmount-food>=0){
+        if (this.currentFoodAmount - food >= 0){
             this.currentFoodAmount -= food;
             return true;
         }
