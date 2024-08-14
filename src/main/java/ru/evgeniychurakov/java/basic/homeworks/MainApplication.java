@@ -1,25 +1,38 @@
 package ru.evgeniychurakov.java.basic.homeworks;
 
 
-import ru.evgeniychurakov.java.basic.homeworks.lesson7.*;
+import ru.evgeniychurakov.java.basic.homeworks.lesson8.AppArrayDataException;
+import ru.evgeniychurakov.java.basic.homeworks.lesson8.AppArraySizeException;
+
+
+import static ru.evgeniychurakov.java.basic.homeworks.lesson8.Application.sumArrayElements;
 
 public class MainApplication {
     public static void main(String[] args) {
-        Transport[] transports = {new Car(20), new ATV(100), new Horse(10), new Bicycle()};
-        Terrain forest = new Forest(200);
-        Terrain field= new Field(500);
-        Terrain swamp = new Swamp(50);
-
-        Human[] humans = {new Human("Vasily"),new Human("Roman"),
-                new Human("Michael"),new Human("George")};
-        for (int i = 0; i < 4; i++) {
-            humans[i].getIntoTransport(transports[i]);
-            humans[i].goField(field.getDistance());
-            humans[i].goForest(forest.getDistance());
-            humans[i].goSwamp(swamp.getDistance());
+        String[][] arr1 = {{"1","2","ТРИ","4"},{"1","2","3","4"},{"4","5","10","11"},{"4","15","16","17"}};
+        String[][] arr2 = {{"1","2","3","4","5"},{"1","2","3","4"},{"4","5","10","11"},{"4","15","16","17"}};
+        String[][] arr3 = {{"1","2","3","4"},{"1","2","3","4"},{"4","5","10","11"},{"4","15","16","17"}};
+        try{
+            System.out.println(sumArrayElements(arr1));
+        } catch (AppArrayDataException e) {
+            System.out.println(e.getMessage() + e.getNumber());
+        } catch (AppArraySizeException e) {
+            System.out.println(e.getMessage());
         }
-
-
+        try{
+            System.out.println(sumArrayElements(arr2));
+        } catch (AppArrayDataException e) {
+            System.out.println(e.getMessage() + e.getNumber());
+        } catch (AppArraySizeException e) {
+            System.out.println(e.getMessage());
+        }
+        try{
+            System.out.println(sumArrayElements(arr3));
+        } catch (AppArrayDataException e) {
+            System.out.println(e.getMessage() + e.getNumber());
+        } catch (AppArraySizeException e) {
+            System.out.println(e.getMessage());
+        }
 
 
     }
