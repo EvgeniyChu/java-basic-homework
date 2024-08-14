@@ -7,6 +7,14 @@ public class Forest implements Terrain {
         this.distance = distance;
     }
 
+    public int getDistance() {
+        return distance;
+    }
+
+    public void setDistance(int distance) {
+        this.distance = distance;
+    }
+
     @Override
     public boolean go(Transport transport) {
         return transport.goForest(distance);
