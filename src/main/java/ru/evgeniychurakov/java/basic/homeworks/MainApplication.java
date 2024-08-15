@@ -16,13 +16,5 @@ public class MainApplication {
             plate.info();
             cats[i].info();
         }
-
-
-
-
-
-
-
-
     }
 }
