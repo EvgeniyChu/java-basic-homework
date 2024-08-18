@@ -1,6 +1,6 @@
 package ru.evgeniychurakov.java.basic.homeworks.lesson7;
 
-public class Car implements Transport{
+public class Car implements Movable {
     private int petrol;
 
     public Car(int petrol) {
@@ -8,35 +8,34 @@ public class Car implements Transport{
     }
 
     @Override
-    public boolean goForest(int distance) {
-        if (this.petrol != 0 && (this.petrol - distance/30) >= 0) {
-            System.out.println("Машина проехала по лесу " + distance);
-            this.petrol -= distance/30;
-            return true;
+    public boolean move(Terrain terrain) {
+        if (terrain.getName() == "Forest") {
+            if (this.petrol != 0 && (this.petrol - terrain.getDistance() / 30) >= 0) {
+                System.out.println("Машина проехала по лесу " + terrain.getDistance());
+                this.petrol -= terrain.getDistance() / 30;
+                return true;
+            }
+            System.out.println("Кончился бензин");
+            return false;
         }
-        System.out.println("Кончился бензин");
-        return false;
-    }
-
-    @Override
-    public boolean goField(int distance) {
-        if (this.petrol != 0 && (this.petrol - distance/20) >= 0) {
-            System.out.println("Машина проехала по полю " + distance);
-            this.petrol -= distance/20;
-            return true;
+        if (terrain.getName() == "Field") {
+            if (this.petrol != 0 && (this.petrol - terrain.getDistance() / 20) >= 0) {
+                System.out.println("Машина проехала по лесу " + terrain.getDistance());
+                this.petrol -= terrain.getDistance() / 20;
+                return true;
+            }
+            System.out.println("Кончился бензин");
+            return false;
         }
-        System.out.println("Кончился бензин");
-        return false;
-    }
-
-    @Override
-    public boolean goSwamp(int distance) {
-        if (this.petrol != 0 && (this.petrol - distance/100) >= 0) {
-            System.out.println("Машина проехала по болоту " + distance);
-            this.petrol -= distance/100;
-            return true;
+        if (terrain.getName() == "Swamp") {
+            if (this.petrol != 0 && (this.petrol - terrain.getDistance() / 100) >= 0) {
+                System.out.println("Машина проехала по лесу " + terrain.getDistance());
+                this.petrol -= terrain.getDistance() / 100;
+                return true;
+            }
+            System.out.println("Кончился бензин");
+            return false;
         }
-        System.out.println("Кончился бензин");
         return false;
     }
 }

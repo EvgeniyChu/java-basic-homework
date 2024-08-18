@@ -1,21 +1,21 @@
 package ru.evgeniychurakov.java.basic.homeworks.lesson7;
 
-public class Bicycle implements Transport{
+public class Bicycle implements Movable{
     @Override
-    public boolean goForest(int distance) {
-        System.out.println("Велосипед проехал по лесу " + distance);
-        return true;
-    }
-
-    @Override
-    public boolean goField(int distance) {
-        System.out.println("Велосипед проехал по полю " + distance);
-        return true;
-    }
-
-    @Override
-    public boolean goSwamp(int distance) {
-        System.out.println("Велосипед не умеет ездить по болоту");
+    public boolean move(Terrain terrain) {
+        if (terrain.getName() == "Forest") {
+            System.out.println("Велосипед проехал по лесу ");
+            return true;
+        }
+        if (terrain.getName() == "Field") {
+            System.out.println("Велосипед проехал по полю ");
+            return true;
+        }
+        if (terrain.getName() == "Swamp") {
+            System.out.println("Велосипед не умеет ездить по болоту");
+            return false;
+        }
         return false;
     }
+
 }

@@ -3,13 +3,13 @@ package ru.evgeniychurakov.java.basic.homeworks.lesson7;
 public class Human {
     private String name;
 
-    private Transport currentTransport;
+    private Movable currentTransport;
 
     public Human(String name) {
         this.name = name;
     }
 
-    public void getIntoTransport(Transport transport) {
+    public void getIntoTransport(Movable transport) {
         this.currentTransport = transport;
     }
 
@@ -17,31 +17,36 @@ public class Human {
         this.currentTransport = null;
         System.out.println("Человек вышел из транспорта");
     }
-    public boolean goForest(int distance) {
-        if (this.currentTransport != null) {
-            this.currentTransport.goForest(distance);
-        } else {
-            System.out.println("Человек пошел пешком по лесу");
-            return true;
+
+    public boolean move(Terrain terrain) {
+        if (terrain.getName() == "Forest") {
+            if (this.currentTransport != null) {
+                this.currentTransport.move(terrain);
+            } else {
+                System.out.println("Человек пошел пешком по лесу");
+                return true;
+            }
+            return false;
         }
-        return false;
-    }
-    public boolean goField(int distance) {
-        if (this.currentTransport != null) {
-            this.currentTransport.goField(distance);
-        } else {
-            System.out.println("Человек пошел пешком по полю");
-            return true;
+        if (terrain.getName() == "Field") {
+            if (this.currentTransport != null) {
+                this.currentTransport.move(terrain);
+            } else {
+                System.out.println("Человек пошел пешком по полю");
+                return true;
+            }
+            return false;
         }
-        return false;
-    }
-    public boolean goSwamp(int distance) {
-        if (this.currentTransport != null) {
-            this.currentTransport.goSwamp(distance);
-        } else {
-            System.out.println("Человек пошел пешком по болоту");
-            return true;
+        if (terrain.getName() == "Swamp") {
+            if (this.currentTransport != null) {
+                this.currentTransport.move(terrain);
+            } else {
+                System.out.println("Человек пошел пешком по болоту");
+                return true;
+            }
+            return false;
         }
         return false;
     }
 }
+
