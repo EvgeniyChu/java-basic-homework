@@ -1,39 +1,42 @@
 package ru.evgeniychurakov.java.basic.homeworks;
 
 
-import ru.evgeniychurakov.java.basic.homeworks.lesson8.AppArrayDataException;
-import ru.evgeniychurakov.java.basic.homeworks.lesson8.AppArraySizeException;
+import ru.evgeniychurakov.java.basic.homeworks.lesson9.Applcation;
+import ru.evgeniychurakov.java.basic.homeworks.lesson9.Employee;
 
-
-import static ru.evgeniychurakov.java.basic.homeworks.lesson8.Application.sumArrayElements;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 public class MainApplication {
     public static void main(String[] args) {
-        String[][] arr1 = {{"1","2","ТРИ","4"},{"1","2","3","4"},{"4","5","10","11"},{"4","15","16","17"}};
-        String[][] arr2 = {{"1","2","3","4","5"},{"1","2","3","4"},{"4","5","10","11"},{"4","15","16","17"}};
-        String[][] arr3 = {{"1","2","3","4"},{"1","2","3","4"},{"4","5","10","11"},{"4","15","16","17"}};
-        try{
-            System.out.println(sumArrayElements(arr1));
-        } catch (AppArrayDataException e) {
-            System.out.println(e.getMessage() + e.getNumber());
-        } catch (AppArraySizeException e) {
-            System.out.println(e.getMessage());
-        }
-        try{
-            System.out.println(sumArrayElements(arr2));
-        } catch (AppArrayDataException e) {
-            System.out.println(e.getMessage() + e.getNumber());
-        } catch (AppArraySizeException e) {
-            System.out.println(e.getMessage());
-        }
-        try{
-            System.out.println(sumArrayElements(arr3));
-        } catch (AppArrayDataException e) {
-            System.out.println(e.getMessage() + e.getNumber());
-        } catch (AppArraySizeException e) {
-            System.out.println(e.getMessage());
-        }
+        System.out.println(Applcation.list(1,5));
 
+        List<Integer> list = new ArrayList<>(Arrays.asList(1,4,5,6,8,10,14,5));
+        System.out.println(Applcation.sumElementsGreaterThan5(list));
+
+        List<Integer> list1 = new ArrayList<>(Arrays.asList(1,4,5,6,8,10,14,5));
+        Applcation.rewriteListByNumber(5,list1);
+        System.out.println(list1);
+
+        List<Integer> list2 = new ArrayList<>(Arrays.asList(1,4,5,6,8,10,14,5));
+        Applcation.addNumberToElements(5,list2);
+        System.out.println(list2);
+
+        List<Employee> employees = new ArrayList<>();
+        employees.add(new Employee("Michael", 20));
+        employees.add(new Employee("George",40));
+        employees.add(new Employee("Roman", 33));
+        employees.add(new Employee("Joe",78));
+        employees.add(new Employee("Donald",75));
+
+        System.out.println(Applcation.getNamesOfEmployees(employees));
+
+        System.out.println(Applcation.getEmployeesOlderThanAge(employees, 40));
+
+        System.out.println(Applcation.isAverageAgeGreaterThanAge(employees,50));
+
+        Applcation.youngestEmployee(employees);
 
     }
 }
