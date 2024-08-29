@@ -1,29 +1,54 @@
 package ru.evgeniychurakov.java.basic.homeworks;
 
 
-import ru.evgeniychurakov.java.basic.homeworks.lesson11.Person;
-import ru.evgeniychurakov.java.basic.homeworks.lesson11.PersonDataBase;
-import ru.evgeniychurakov.java.basic.homeworks.lesson11.Position;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 public class MainApplication {
     public static void main(String[] args) {
-        PersonDataBase personDB = new PersonDataBase();
-        Person person1 = new Person("Alex", Position.DRIVER, 12345544400L);
-        Person person2 = new Person("Michael", Position.BRANCH_DIRECTOR, 12345544412L);
-        Person person3 = new Person("George", Position.DEVELOPER, 12345544423L);
-        Person person4 = new Person("Joe", Position.DIRECTOR, 12345544488L);
-        Person person5 = new Person("Donald", Position.JANITOR, 12345544499L);
-        Person person6 = new Person("Vladimir", Position.PLUMBER, 12345544408L);
-        personDB.add(person1);
-        personDB.add(person2);
-        personDB.add(person3);
-        personDB.add(person4);
-        personDB.add(person5);
-        personDB.add(person6);
-        System.out.println(personDB);
-        System.out.println(personDB.findById(12345544423L));
-        System.out.println(personDB.isEmployee(12345544423L));
-        System.out.println(personDB.isManager(person1));
+        Scanner sc = new Scanner(System.in);
+        File root = new File(".");
+        File[] files = root.listFiles();
+        List<File> textFiles = new ArrayList<File>();
+        if (files != null) {
+            for (File file : files) {
+                if (file.isFile() && file.getName().endsWith(".txt")) {
+                    textFiles.add(file);
+                }
+            }
+        }
+        System.out.println(textFiles);
+        System.out.println(textFiles.get(0).getName());
+        System.out.println("Выберите файл :");
+        String file = sc.nextLine();
+        for (File f : textFiles){
+            if (f.getName().equals(file)) {
+                try (BufferedInputStream in = new BufferedInputStream(new FileInputStream(f))) {
+                    int n = in.read();
+                    while (n != -1) {
+                        System.out.print((char)n);
+                        n = in.read();
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                System.out.println("Введите строку :");
+                String line = sc.nextLine();
+                try (BufferedOutputStream out = new BufferedOutputStream(new FileOutputStream(f))) {
+                    byte[] buffer = line.getBytes(StandardCharsets.UTF_8);
+                    for (int i = 0; i < buffer.length; i++) {
+                        out.write(buffer[i]);
+                    }
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
+
+            }
+
+        }
     }
 }
