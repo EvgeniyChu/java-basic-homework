@@ -17,7 +17,7 @@ class PingClient implements Runnable {
     public void run() {
         try (BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
              PrintWriter out = new PrintWriter(socket.getOutputStream(), true)) {
-
+            out.println("Доступные операции: +, -, *, /");
             String inputLine;
             while ((inputLine = in.readLine()) != null) {
                 System.out.println("Получен запрос: " + inputLine);

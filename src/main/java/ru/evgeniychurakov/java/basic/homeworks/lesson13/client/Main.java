@@ -14,7 +14,11 @@ public class Main {
              BufferedReader userInput = new BufferedReader(new InputStreamReader(System.in))) {
 
             String response;
-            System.out.println("Доступны математические вычисления: +,-,*,/");
+            String serverResponse;
+
+            serverResponse = in.readLine();
+            System.out.println(serverResponse);
+
             System.out.println("Введите первое число:");
             String firstInput = userInput.readLine();
             double num1 = Double.parseDouble(firstInput);
